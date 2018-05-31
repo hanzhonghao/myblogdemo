@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhonghao.mapper.SysParamMapper">
+
+
+	<insert id="insertSysParam" parameterType="com.zhonghao.entity.SysParam" useGeneratedKeys="true" keyProperty="id">
+	    insert into t_param(param_name,param_value,create_user,create_time,update_user,update_time)
+	     values (#{paramName},#{paramValue},#{createUser},#{createTime},#{updateUser},#{updateTime})
+	</insert>
+
+
+</mapper>
