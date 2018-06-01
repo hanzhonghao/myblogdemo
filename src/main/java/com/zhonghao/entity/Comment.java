@@ -7,12 +7,13 @@ import lombok.ToString;
 
 /**
  * 评论(t_comment)
- * @author tt
  *
  */
-@Data
+@Setter
+@Getter
+@ToString
 public class Comment implements java.io.Serializable {
-    
+
     private Long id;
     private String nickName;
     private String email;

@@ -1,5 +1,6 @@
 package com.zhonghao.controller;
 
+import com.zhonghao.common.annotation.Security;
 import com.zhonghao.model.TestVO;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -9,8 +10,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
-
-import static javafx.scene.input.KeyCode.R;
 
 
 /**
@@ -52,6 +51,14 @@ public class WelcomeController {
     public String testException(){
         int i = 1/0;
         return "exception";
+    }
+
+    /**加上我们的自定义注解，意思是该方法是要做权限拦截。*/
+    @RequestMapping("security")
+    @ResponseBody
+    @Security
+    public String testSecurity(){
+        return "security";
     }
 
 }

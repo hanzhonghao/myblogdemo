@@ -3,10 +3,37 @@
 <mapper namespace="com.zhonghao.mapper.SysParamMapper">
 
 
-	<insert id="insertSysParam" parameterType="com.zhonghao.entity.SysParam" useGeneratedKeys="true" keyProperty="id">
-	    insert into t_param(param_name,param_value,create_user,create_time,update_user,update_time)
-	     values (#{paramName},#{paramValue},#{createUser},#{createTime},#{updateUser},#{updateTime})
+	<sql id="table_name">t_param</sql>
+
+	<sql id="base_column">
+		param_name, param_value, create_user, create_time, update_user, update_time
+	</sql>
+
+	<insert id="save" parameterType="com.zhonghao.entity.SysParam" useGeneratedKeys="true" keyProperty="id">
+		insert into <include refid="table_name" /> (<include refid="base_column" />)
+		values (#{paramName},#{paramValue},#{createUser},#{createTime},#{updateUser},#{updateTime})
 	</insert>
 
+	<delete id="delete">
+		delete from <include refid="table_name" />
+		where param_name = #{paramName}
+	</delete>
+
+	<update id="update">
+		update <include refid="table_name" />
+		set param_value = #{paramValue},
+		update_user = #{updateUser},
+		update_time = #{updateTime}
+		where param_name = #{paramName}
+	</update>
+
+	<select id="findByName" resultType="com.zhonghao.entity.SysParam">
+		select <include refid="base_column" /> from <include refid="table_name" />
+		where param_name = #{paramName}
+	</select>
+
+	<select id="findAll" resultType="com.zhonghao.entity.SysParam">
+		select <include refid="base_column" /> from <include refid="table_name" />
+	</select>
 
 </mapper>

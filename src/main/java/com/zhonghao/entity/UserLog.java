@@ -6,10 +6,11 @@ import java.util.Date;
 
 /**
  * 用户登录日志(t_user_log)
- * @author tt
  *
  */
-@Data
+@Getter
+@Setter
+@ToString
 @AllArgsConstructor
 @NoArgsConstructor
 public class UserLog implements java.io.Serializable {
@@ -19,5 +20,4 @@ public class UserLog implements java.io.Serializable {
     private Date loginTime;
     private Integer loginStat;
     private Integer loginErrorCount;
-    
 }
